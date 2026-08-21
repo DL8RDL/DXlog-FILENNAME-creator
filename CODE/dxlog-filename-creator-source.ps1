@@ -6,6 +6,7 @@ function Get-DefaultIniTemplate {
 # ===========================================================================================
 # DXlog FILENAME-creator by DL8RDL (c) 2026 - configuration file
 # Comments are allowed, start lines containing your comment with # (semicolon)  or  # (pound)
+# ------------------->>>  THIS FILE MUST BE ENCODED IN UTF-8  <<<-------------------
 # ===========================================================================================
 
 [Settings]
