@@ -1091,3 +1091,52 @@ $btnCreate.Add_Click({
 # Fenstergröße final setzen und ausführen
 $form.Add_Load({ $form.Size = New-Object System.Drawing.Size(860, 760); Update-GeneratedName; if ($script:UpdatePreviewAction) { & $script:UpdatePreviewAction }; $txtCall.Select() })
 $form.ShowDialog() | Out-Null
+
+# =====================================================================
+# AUTOMATISCHE ERWEITERUNG: BROWSE-BUTTONS FÜR DIE PFADE
+# =====================================================================
+
+# 1. Das Fenster automatisch ein Stück breiter machen für die Knöpfe
+$form.Width = 460
+
+# 2. Oberen "Browse..." Button erstellen und platzieren
+$btnBrowseBase = New-Object System.Windows.Forms.Button
+$btnBrowseBase.Text = "Browse..."
+$btnBrowseBase.Size = New-Object System.Drawing.Size(75, 23)
+# Er nimmt automatisch die exakte Höhe des oberen Textfeldes ein:
+$btnBrowseBase.Location = New-Object System.Drawing.Point(355, $txtDestPathBase.Location.Y)
+$btnBrowseBase.Font = New-Object System.Drawing.Font("Segoe UI", 9)
+
+$btnBrowseBase.Add_Click({
+    $folderBrowser = New-Object System.Windows.Forms.FolderBrowserDialog
+    $folderBrowser.Description = "Select the base destination directory"
+    if ([System.IO.Directory]::Exists($txtDestPathBase.Text)) {
+        $folderBrowser.SelectedPath = $txtDestPathBase.Text
+    }
+    if ($folderBrowser.ShowDialog() -eq [System.Windows.Forms.DialogResult]::OK) {
+        # Ändert den Text und alarmiert Ihre Jahr-Logik:
+        $txtDestPathBase.Text = $folderBrowser.SelectedPath
+    }
+})
+$form.Controls.Add($btnBrowseBase)
+
+# 3. Unteren "Browse..." Button erstellen und platzieren
+$btnBrowseFinal = New-Object System.Windows.Forms.Button
+$btnBrowseFinal.Text = "Browse..."
+$btnBrowseFinal.Size = New-Object System.Drawing.Size(75, 23)
+# Er nimmt automatisch die exakte Höhe des unteren Textfeldes ein:
+$btnBrowseFinal.Location = New-Object System.Drawing.Point(355, $txtDestPathFinal.Location.Y)
+$btnBrowseFinal.Font = New-Object System.Drawing.Font("Segoe UI", 9)
+
+$btnBrowseFinal.Add_Click({
+    $folderBrowser = New-Object System.Windows.Forms.FolderBrowserDialog
+    $folderBrowser.Description = "Select the final destination directory"
+    if ([System.IO.Directory]::Exists($txtDestPathFinal.Text)) {
+        $folderBrowser.SelectedPath = $txtDestPathFinal.Text
+    }
+    if ($folderBrowser.ShowDialog() -eq [System.Windows.Forms.DialogResult]::OK) {
+        $txtDestPathFinal.Text = $folderBrowser.SelectedPath
+    }
+})
+$form.Controls.Add($btnBrowseFinal)
+
