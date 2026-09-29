@@ -4,16 +4,12 @@ Download all four files within the "Program Files"-Folder and copy them to any d
 You do not need "readme.md"
 
 
-DOWNLOAD THESE FILES
-
+<b><u>DOWNLOAD THESE FILES</b></u>
 
 DXlog FILENAME-creator 1.0.exe
 
-
 DXlog FILENAME-creator 1.0-config.ini
 
-
 logo001.png
-
 
 readme.txt
