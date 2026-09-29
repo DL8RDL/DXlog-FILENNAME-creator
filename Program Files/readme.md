@@ -5,11 +5,7 @@ You do not need "readme.md"
 
 
 <b><u>DOWNLOAD THESE FILES</b></u>
-
 DXlog FILENAME-creator 1.0.exe
-
 DXlog FILENAME-creator 1.0-config.ini
-
 logo001.png
-
 readme.txt
